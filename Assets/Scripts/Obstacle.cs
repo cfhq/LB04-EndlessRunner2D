@@ -2,13 +2,11 @@ using UnityEngine;
 
 public class Obstacle : MonoBehaviour
 {
-    
     private GameObject player;
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
-
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -19,7 +17,11 @@ public class Obstacle : MonoBehaviour
         }
         else if (collision.tag == "Player")
         {
-            Destroy(player.gameObject);
+            var gameOver = FindObjectOfType<GameOver>();
+            if (gameOver != null)
+                gameOver.ShowGameOver();
+
+            Destroy(player != null ? player.gameObject : collision.gameObject);
         }
     }
 }

@@ -7,6 +7,7 @@ public class LoopingBackground : MonoBehaviour
 
     void Update()
     {
+        if (GameOver.isGameOver) return;
         backgroundRenderer.material.mainTextureOffset += new Vector2(backgroundSpeed * Time.deltaTime, 0);
     }
 }

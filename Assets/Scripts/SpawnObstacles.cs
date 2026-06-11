@@ -12,6 +12,9 @@ public class SpawnObstacles : MonoBehaviour
 
     void Update()
     {
+        if (GameOver.isGameOver)
+            return;
+
         if (Time.time >= spawnTime)
         {
             Spawn();
